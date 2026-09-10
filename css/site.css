@@ -331,11 +331,126 @@ a:hover {
 }
 .field input,
 .field select,
-.field textarea {
+.field textarea,
+.service-select__trigger {
   font-size: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.field input:hover,
+.field select:hover,
+.field textarea:hover,
+.service-select__trigger:hover {
+  border-color: #a7b3bb;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus,
+.service-select__trigger:focus-visible,
+.service-select__trigger[aria-expanded='true'] {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px #2048ff14;
+}
+@media (forced-colors: active) {
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus,
+  .service-select__trigger:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
 }
 .field label {
   font-size: 16px;
+}
+.field select[hidden] {
+  display: none;
+}
+.service-select {
+  position: relative;
+}
+.service-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 16px;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 16px;
+  text-align: left;
+}
+.service-select__trigger::after {
+  content: '';
+  flex: 0 0 8px;
+  height: 8px;
+  margin: -4px 2px 0 0;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+.service-select__trigger[aria-expanded='true']::after {
+  margin-top: 4px;
+  transform: rotate(225deg);
+}
+.service-select__options {
+  position: absolute;
+  z-index: 5;
+  inset: calc(100% + 8px) 0 auto;
+  margin: 0;
+  padding: 6px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--white);
+  box-shadow:
+    0 12px 32px #10222d1a,
+    0 2px 6px #10222d08;
+  scrollbar-width: thin;
+}
+.service-select[data-side='top'] .service-select__options {
+  top: auto;
+  bottom: calc(100% + 8px);
+}
+.service-select__option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 11px 30px 11px 12px;
+  border-radius: 5px;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.service-select__option + .service-select__option {
+  margin-top: 2px;
+}
+.service-select__option.is-active,
+.service-select__option:hover {
+  background: var(--paper);
+}
+.service-select__option[aria-selected='true'] {
+  background: #eef1ff;
+  color: var(--blue);
+  font-weight: 500;
+}
+.service-select__option[aria-selected='true']::after {
+  content: '';
+  position: absolute;
+  right: 13px;
+  width: 6px;
+  height: 10px;
+  margin-top: -3px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
 }
 .field .note {
   margin: 10px 0 0;
@@ -348,12 +463,24 @@ a:hover {
 .consent input {
   margin: 2px 0 0;
 }
+.consent input:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
 .consent a {
   color: var(--ink);
 }
 .form-panel > .button {
-  width: 100%;
-  justify-content: space-between;
+  width: auto;
+  min-height: 54px;
+  padding: 14px 22px;
+  border-radius: 10px;
+  font-size: 16px;
+  justify-content: center;
+}
+.form-panel > .button:focus-visible {
+  outline-width: 2px;
+  outline-offset: 3px;
 }
 .form-status:empty {
   display: none;
