@@ -1,9 +1,9 @@
 ﻿/* Home: architectural imagery, varied scale and a photographic explorer. */
 .home-hero {
   padding-bottom: 40px;
-}
-.home-hero {
   overflow: hidden;
+  isolation: isolate;
+  background: var(--paper);
 }
 .home-hero .hero-grid {
   grid-template-columns: minmax(0, 44fr) minmax(0, 56fr);
@@ -269,7 +269,6 @@
 @media (max-width: 1199px) {
   .home-hero {
     position: relative;
-    isolation: isolate;
     padding-bottom: 0;
   }
   .home-hero::after {

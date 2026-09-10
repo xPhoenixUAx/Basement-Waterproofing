@@ -27,51 +27,55 @@
     }
   });
   if ('IntersectionObserver' in window && !reduced.matches) {
-    const itemsFor = (el) => (el.hasAttribute('data-reveal-group') ? [...el.children] : [el]);
-    const io = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          io.unobserve(entry.target);
-          const items = itemsFor(entry.target);
-          items.forEach((el, i) => {
-            play(
-              el,
-              [
-                { opacity: 0, translate: `0 ${innerWidth < 768 ? 16 : 28}px` },
-                { opacity: 1, translate: '0 0' },
-              ],
-              {
-                duration: 560,
-                delay: i * 65,
-              },
-            );
-            // The animation owns opacity before releasing the prepared state.
-            el.classList.remove('motion-pending');
-          });
-        }),
-      { threshold: 0, rootMargin: '0px 0px 48px 0px' },
-    );
+    const targets = new Map();
     document.querySelectorAll('[data-reveal],[data-reveal-group],.about-photo').forEach((el) => {
+      if (el.hasAttribute('data-reveal-group')) {
+        [...el.children].forEach((item) => targets.set(item, el));
+      } else if (!targets.has(el)) {
+        targets.set(el, null);
+      }
+    });
+    const io = new IntersectionObserver(
+      (entries) => {
+        const stagger = new Map();
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting || !entry.target.classList.contains('motion-pending')) return;
+          const el = entry.target;
+          io.unobserve(el);
+          const group = targets.get(el);
+          const index = group ? stagger.get(group) || 0 : 0;
+          if (group) stagger.set(group, index + 1);
+          play(
+            el,
+            [
+              { opacity: 0, translate: `0 ${innerWidth < 768 ? 18 : 26}px` },
+              { opacity: 1, translate: '0 0' },
+            ],
+            { duration: 640, delay: Math.min(index, 3) * 75 },
+          );
+          // Backwards fill keeps delayed cards hidden until their own animation starts.
+          el.classList.remove('motion-pending');
+        });
+      },
+      { threshold: 0, rootMargin: '0px 0px -32px 0px' },
+    );
+    targets.forEach((group, el) => {
+      // Animate a block or its children, never both at the same time.
+      for (let parent = el.parentElement; parent; parent = parent.parentElement) {
+        if (targets.has(parent)) return;
+      }
       // Never hide content that is already in view, including restored scroll positions.
       if (el.getBoundingClientRect().top < innerHeight) return;
-      itemsFor(el).forEach((item) => item.classList.add('motion-pending'));
+      el.classList.add('motion-pending');
       io.observe(el);
     });
+    document.addEventListener('focusin', (event) => {
+      const pending = event.target.closest('.motion-pending');
+      if (!pending) return;
+      io.unobserve(pending);
+      pending.classList.remove('motion-pending');
+    });
   }
-  document.querySelectorAll('[data-hero-image]').forEach((el) => {
-    const reveal = () =>
-      play(
-        el,
-        [
-          { opacity: 0, transform: 'translateY(14px)' },
-          { opacity: 1, transform: 'translateY(0)' },
-        ],
-        { duration: 650 },
-      );
-    if (el.complete) reveal();
-    else el.addEventListener('load', reveal, { once: true });
-  });
   document.querySelectorAll('.faq details, .mobile-links details').forEach((details) => {
     const summary = details.querySelector(':scope > summary');
     const content = summary?.nextElementSibling;

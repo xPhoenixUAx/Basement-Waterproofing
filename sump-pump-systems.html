@@ -11,7 +11,7 @@
     <link href="css/base.css?v=3" rel="stylesheet" />
     <script defer="" src="config/config.js?v=5"></script>
     <script defer="" src="js/brand.js?v=3"></script>
-    <script defer="" src="js/motion.js?v=3"></script>
+    <script defer="" src="js/motion.js?v=5"></script>
     <script defer="" src="js/navigation.js"></script>
     <script defer="" src="js/forms.js?v=3"></script>
     <meta
@@ -19,7 +19,8 @@
       name="description"
     />
     <meta content="#F3F2ED" name="theme-color" />
-    <link href="css/site.css?v=5" rel="stylesheet" />
+    <link href="css/site.css?v=6" rel="stylesheet" />
+    <script src="js/page-transitions.js?v=2"></script>
     <link href="css/pages/service.css?v=3" rel="stylesheet" />
     <link href="css/drainage.css?v=2" rel="stylesheet" />
     <script defer="" src="js/drainage.js?v=3"></script>
@@ -184,7 +185,7 @@
       </section>
       <section class="section service-system" id="system-details" tabindex="-1">
         <div class="container">
-          <div class="service-section-heading">
+          <div class="service-section-heading" data-reveal="">
             <div>
               <p class="service-eyebrow">A closer look</p>
               <h2 data-reveal="">A pump is part of a system.</h2>
@@ -195,7 +196,7 @@
               existing one.
             </p>
           </div>
-          <div class="service-system-grid">
+          <div class="service-system-grid" data-reveal-group="">
             <figure class="service-detail-figure" data-reveal="">
               <picture class="service-detail-picture">
                 <source
@@ -255,7 +256,7 @@
       </section>
       <section class="section service-process" id="project-process" tabindex="-1">
         <div class="container">
-          <div class="service-section-heading">
+          <div class="service-section-heading" data-reveal="">
             <div>
               <p class="service-eyebrow">The project conversation</p>
               <h2 data-reveal="">Discuss the full operating picture.</h2>
@@ -289,7 +290,7 @@
             </article>
           </div>
           <div class="service-demo">
-            <div class="service-demo-heading">
+            <div class="service-demo-heading" data-reveal="">
               <h3>Watch the water level trigger the pump.</h3>
               <p>
                 The transparent model shows the collection cycle: water rises, the float activates
@@ -387,7 +388,7 @@
         <div class="container">
           <div class="editorial-grid">
             <h2 data-reveal="">Before you send a request.</h2>
-            <div class="faq">
+            <div class="faq" data-reveal-group="">
               <details>
                 <summary>Can I ask about an existing sump system?</summary>
                 <div class="answer">
@@ -452,7 +453,7 @@
       </section>
       <section aria-labelledby="related-title" class="section service-related">
         <div class="container">
-          <div class="service-section-heading">
+          <div class="service-section-heading" data-reveal="">
             <div>
               <p class="service-eyebrow">The wider picture</p>
               <h2 data-reveal="" id="related-title">Connected solutions.</h2>
@@ -462,7 +463,7 @@
               the collection point.
             </p>
           </div>
-          <div class="service-related-grid">
+          <div class="service-related-grid" data-reveal-group="">
             <a class="service-related-card" href="interior-waterproofing.html">
               <picture class="service-related-picture">
                 <source
@@ -550,7 +551,7 @@
       </section>
       <section class="section dark closing-section" id="start-request" tabindex="-1">
         <div class="container">
-          <div class="closing-grid">
+          <div class="closing-grid" data-reveal-group="">
             <div>
               <h2 data-reveal="">Tell us about your basement.</h2>
               <p>Share what you have noticed and our team will review your request.</p>

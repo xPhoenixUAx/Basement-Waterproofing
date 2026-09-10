@@ -28,10 +28,20 @@ body {
 main {
   display: block;
 }
+.page-entering main,
+.page-entering .site-footer,
+.page-leaving main,
+.page-leaving .site-footer {
+  opacity: 0;
+}
 .motion-pending {
   opacity: 0;
 }
 @media (prefers-reduced-motion: reduce) {
+  .page-entering main,
+  .page-entering .site-footer,
+  .page-leaving main,
+  .page-leaving .site-footer,
   .motion-pending {
     opacity: 1;
   }

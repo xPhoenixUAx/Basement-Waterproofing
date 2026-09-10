@@ -11,7 +11,7 @@
     <link href="css/base.css?v=3" rel="stylesheet" />
     <script defer="" src="config/config.js?v=5"></script>
     <script defer="" src="js/brand.js?v=3"></script>
-    <script defer="" src="js/motion.js?v=3"></script>
+    <script defer="" src="js/motion.js?v=5"></script>
     <script defer="" src="js/navigation.js"></script>
     <script defer="" src="js/forms.js?v=3"></script>
     <meta
@@ -19,8 +19,9 @@
       name="description"
     />
     <meta content="#F3F2ED" name="theme-color" />
-    <link href="css/site.css?v=5" rel="stylesheet" />
-    <link href="css/pages/home.css?v=5" rel="stylesheet" />
+    <link href="css/site.css?v=6" rel="stylesheet" />
+    <script src="js/page-transitions.js?v=2"></script>
+    <link href="css/pages/home.css?v=6" rel="stylesheet" />
     <link href="css/pages/services-gallery.css" rel="stylesheet" />
     <link href="css/drainage.css?v=2" rel="stylesheet" />
     <link href="css/pages/moisture.css" rel="stylesheet" />
@@ -158,14 +159,14 @@
       </section>
       <section class="section signs-section" id="signs" tabindex="-1">
         <div class="container">
-          <div class="section-heading">
+          <div class="section-heading" data-reveal="">
             <h2 data-reveal="">Notice the signs early.</h2>
             <p>
               Visible changes can help you explain what is happening in your basement. Start with
               what you can observe.
             </p>
           </div>
-          <div class="signs-grid">
+          <div class="signs-grid" data-reveal-group="">
             <article class="sign-card" data-reveal="">
               <button
                 aria-describedby="sign-description-0"
@@ -305,14 +306,14 @@
       </section>
       <section class="section services-section" id="services" tabindex="-1">
         <div class="container">
-          <div class="section-heading services-heading">
+          <div class="section-heading services-heading" data-reveal="">
             <h2 data-reveal="">Explore your options.</h2>
             <p class="section-intro">
               Different projects call for different conversations. Explore these service categories
               before sharing your request.
             </p>
           </div>
-          <div class="services-grid">
+          <div class="services-grid" data-reveal-group="">
             <article class="service-card" data-reveal="" data-service-card="">
               <a
                 aria-describedby="service-description-0"
@@ -528,7 +529,7 @@
       </section>
       <section class="section sump-section" id="sump-pump" tabindex="-1">
         <div class="container">
-          <div class="sump-heading">
+          <div class="sump-heading" data-reveal="">
             <div>
               <p class="sump-eyebrow">Sump pump systems</p>
               <h2 data-reveal="">Give rising water<br />a way out.</h2>
@@ -604,7 +605,7 @@
               </div>
             </div>
           </div>
-          <div class="sump-explanation">
+          <div class="sump-explanation" data-reveal-group="">
             <article>
               <h3>Recurring water after rain</h3>
               <p>
@@ -634,11 +635,16 @@
       </section>
       <section class="section moisture-section" data-explorer="" id="explore" tabindex="-1">
         <div class="container">
-          <div class="moisture-heading">
+          <div class="moisture-heading" data-reveal="">
             <h2 data-reveal="">Where are you noticing moisture?</h2>
             <p>A location and a few details can help our team understand your request.</p>
           </div>
-          <div aria-label="Location of moisture" class="moisture-options" role="group">
+          <div
+            aria-label="Location of moisture"
+            class="moisture-options"
+            role="group"
+            data-reveal-group=""
+          >
             <button
               aria-describedby="moisture-preview-walls"
               aria-label="Walls"
@@ -816,7 +822,7 @@
       </section>
       <section class="section process-section" id="how-it-works" tabindex="-1">
         <div class="container">
-          <div class="process-heading">
+          <div class="process-heading" data-reveal="">
             <h2 data-reveal="">From a question to a clearer next step.</h2>
             <p class="section-intro">
               Start with a short description of your project. Our role is to help you begin a
@@ -920,7 +926,7 @@
                 src="assets/photos/daylight-stairs-1440.webp?v=4"
                 width="1024"
             /></picture>
-            <div class="about-copy">
+            <div class="about-copy" data-reveal="">
               <h2 data-reveal="">A starting point for your next step.</h2>
               <p>
                 <span data-config="brand.name">belowline</span> is a free referral website that
@@ -945,7 +951,7 @@
         <div class="container">
           <div class="editorial-grid">
             <h2 data-reveal="">Questions, before you begin.</h2>
-            <div class="faq">
+            <div class="faq" data-reveal-group="">
               <details>
                 <summary>Does this website perform waterproofing work?</summary>
                 <div class="answer">
@@ -1010,7 +1016,7 @@
       <section class="section contact-section" id="contact" tabindex="-1">
         <div class="container">
           <div class="contact-grid">
-            <div class="contact-copy">
+            <div class="contact-copy" data-reveal="">
               <h2 data-reveal="">Tell us what you’re noticing.</h2>
               <p class="lead">
                 Share a few details about your basement. Our team will review your request and get
@@ -1024,7 +1030,7 @@
                 This form is for service inquiries and does not provide an emergency response.
               </p>
             </div>
-            <div class="contact-form-wrap">
+            <div class="contact-form-wrap" data-reveal="">
               <form
                 action="php/form-handler.php"
                 class="form-panel"
