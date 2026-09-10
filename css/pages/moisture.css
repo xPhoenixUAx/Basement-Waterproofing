@@ -1,0 +1,333 @@
+.moisture-section {
+  background: #e8e7e1;
+  border: 0;
+}
+.moisture-heading {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 36px;
+}
+.moisture-heading h2 {
+  max-width: 15ch;
+  margin: 0;
+}
+.moisture-heading > p {
+  max-width: 38ch;
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+.moisture-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.moisture-choice {
+  position: relative;
+  display: block;
+  min-width: 0;
+  width: 100%;
+  height: 310px;
+  border: 0;
+  border-radius: 9px;
+  padding: 0;
+  text-align: left;
+  background: transparent;
+  color: #fff;
+  perspective: 1400px;
+  outline-offset: 5px;
+}
+.moisture-card-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.22, 0.7, 0.22, 1);
+}
+.moisture-card-front,
+.moisture-card-back {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: 9px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.moisture-card-front {
+  background: #253a45;
+  transform: rotateY(0deg);
+}
+.moisture-card-back {
+  background: #163541;
+  transform: rotateY(180deg);
+  border: 1px solid #496473;
+}
+.moisture-card-front .photo-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+.moisture-card-front .photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: auto;
+}
+.moisture-card-front:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #10222d00 35%, #10222d35 60%, #10222deb 100%);
+  pointer-events: none;
+}
+.moisture-choice-copy {
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  bottom: 24px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.moisture-back-copy {
+  position: absolute;
+  inset: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+}
+.moisture-back-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.moisture-choice-title {
+  font-size: 29px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+.moisture-choice-description {
+  display: block;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0;
+  color: #e0e9ed;
+}
+.moisture-choice-mark {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ffffff99;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1;
+  background: #10222d50;
+}
+.moisture-choice-mark:after {
+  content: '↻';
+}
+.moisture-card-back .moisture-choice-mark {
+  color: #a7beff;
+  border-color: #708cb7;
+}
+.moisture-choice[aria-pressed='true'] {
+  outline: 3px solid var(--blue);
+}
+.moisture-choice[aria-pressed='true'] .moisture-choice-mark {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+.moisture-choice[aria-pressed='true'] .moisture-choice-mark:after {
+  content: '✓';
+  font-size: 18px;
+}
+.moisture-choice:is(:focus-visible, [data-preview='true']) .moisture-card-inner {
+  transform: rotateY(180deg);
+}
+.moisture-response {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 44px;
+  align-items: center;
+  padding: 30px 0 24px;
+  margin-top: 30px;
+  border-top: 1px solid #a8b7bc;
+}
+.moisture-guidance [data-zone-panel] {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 40px;
+  align-items: start;
+  align-content: start;
+  min-height: 88px;
+}
+.moisture-guidance h3 {
+  font-size: 24px;
+  line-height: 1.25;
+  max-width: 20ch;
+  margin: 0;
+}
+.moisture-guidance p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 50ch;
+}
+.moisture-response .button {
+  font-size: 15px;
+  white-space: nowrap;
+}
+.moisture-note {
+  font-size: 12px;
+  color: #536773;
+  max-width: none;
+  margin: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .moisture-choice:hover .moisture-card-inner {
+    transform: rotateY(180deg);
+  }
+}
+@media (max-width: 1199px) {
+  .moisture-heading {
+    gap: 40px;
+  }
+  .moisture-options {
+    gap: 16px;
+  }
+  .moisture-choice {
+    height: 270px;
+  }
+  .moisture-choice-copy {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+  }
+  .moisture-choice-title {
+    font-size: 25px;
+  }
+  .moisture-back-copy {
+    inset: 22px;
+    gap: 16px;
+  }
+  .moisture-choice-description {
+    font-size: 14px;
+  }
+  .moisture-response {
+    gap: 30px;
+  }
+  .moisture-guidance [data-zone-panel] {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    min-height: 128px;
+  }
+  .moisture-guidance h3 {
+    max-width: none;
+  }
+  .moisture-heading > p {
+    font-size: 16px;
+  }
+}
+@media (max-width: 767px) {
+  .moisture-heading {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+  .moisture-heading h2 {
+    max-width: 15ch;
+  }
+  .moisture-heading > p {
+    max-width: 36ch;
+    margin: 0;
+  }
+  .moisture-options {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .moisture-choice {
+    height: 216px;
+  }
+  .moisture-choice-title {
+    font-size: 24px;
+  }
+  .moisture-choice-copy {
+    left: 22px;
+    right: 22px;
+    bottom: 20px;
+  }
+  .moisture-back-copy {
+    inset: 22px;
+    gap: 14px;
+  }
+  .moisture-choice-mark {
+    width: 32px;
+    height: 32px;
+    font-size: 21px;
+  }
+  .moisture-response {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 28px;
+    padding: 24px 0 20px;
+  }
+  .moisture-guidance [data-zone-panel] {
+    gap: 12px;
+    min-height: 156px;
+  }
+  .moisture-guidance h3 {
+    font-size: 23px;
+    max-width: 22ch;
+  }
+  .moisture-guidance p {
+    font-size: 15px;
+  }
+  .moisture-response .button {
+    justify-self: start;
+  }
+  .moisture-note {
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .moisture-card-inner,
+  .moisture-choice:is(:focus-visible, [data-preview='true']) .moisture-card-inner {
+    transition: none;
+    transform: none;
+  }
+  .moisture-card-back {
+    transform: none;
+    visibility: hidden;
+  }
+  .moisture-choice:is(:focus-visible, [data-preview='true']) .moisture-card-front {
+    visibility: hidden;
+  }
+  .moisture-choice:is(:focus-visible, [data-preview='true']) .moisture-card-back {
+    visibility: visible;
+  }
+}
+@media (prefers-reduced-motion: reduce) and (hover: hover) and (pointer: fine) {
+  .moisture-choice:hover .moisture-card-inner {
+    transform: none;
+  }
+  .moisture-choice:hover .moisture-card-front {
+    visibility: hidden;
+  }
+  .moisture-choice:hover .moisture-card-back {
+    visibility: visible;
+  }
+}

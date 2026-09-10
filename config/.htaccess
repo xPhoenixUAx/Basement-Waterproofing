@@ -1,0 +1,4 @@
+Options -Indexes
+<FilesMatch "\.(bak|old|tmp)$">
+Require all denied
+</FilesMatch>

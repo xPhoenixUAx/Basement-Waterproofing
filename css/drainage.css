@@ -1,0 +1,529 @@
+.drainage-feature {
+  padding: 40px;
+  margin-top: 64px;
+  background: #10222d;
+  color: #f3f2ed;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.sump-heading {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+.sump-eyebrow {
+  font-size: 13px;
+  color: var(--blue);
+  margin: 0 0 20px;
+}
+.sump-heading h2 {
+  margin: 0;
+  max-width: 13ch;
+}
+.sump-problem p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 18px;
+  max-width: 60ch;
+}
+.sump-problem .sump-lead {
+  font-size: 23px;
+  line-height: 1.4;
+  color: var(--ink);
+  letter-spacing: -0.025em;
+  margin-bottom: 22px;
+  max-width: 34ch;
+}
+.sump-demonstration {
+  padding: 32px 40px;
+  background: #10222d;
+  color: #f3f2ed;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.sump-model-title {
+  font-size: 26px;
+  line-height: 1.3;
+  margin: 0 0 12px;
+  letter-spacing: -0.025em;
+}
+.sump-demonstration :focus-visible {
+  outline-color: #acc0ff;
+}
+.sump-explanation {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  margin-top: 36px;
+}
+.sump-explanation article {
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.sump-explanation h3 {
+  font-size: 21px;
+  line-height: 1.3;
+  margin: 0 0 14px;
+}
+.sump-explanation p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+}
+.sump-readout {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #c4d4df;
+  background: #10222de6;
+  padding: 9px 12px;
+  border: 1px solid #38515f;
+  border-radius: 20px;
+  pointer-events: none;
+}
+.sump-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #91a8b7;
+}
+.sump-widget[data-pump-active='true'] .sump-indicator {
+  background: #65e6ba;
+  box-shadow: 0 0 12px #65e6ba80;
+}
+.sump-outlet-label {
+  position: absolute;
+  font-size: 11px;
+  color: #aec6d4;
+  pointer-events: none;
+  white-space: nowrap;
+  transform: translate(-50%, -100%);
+}
+.sump-readout[hidden],
+.sump-outlet-label[hidden] {
+  display: none;
+}
+.drainage-intro {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 20px;
+}
+.drainage-intro h3 {
+  font-size: 42px;
+  line-height: 1.1;
+  max-width: none;
+  margin: 0;
+}
+.drainage-intro .drainage-label {
+  color: #9ab2ff;
+  font-size: 13px;
+  margin: 0 0 14px;
+}
+.drainage-description {
+  color: #b8c9d3;
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 43ch;
+  margin: 0;
+}
+.drainage-widget {
+  min-width: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  column-gap: 40px;
+  background: #10222d;
+}
+.drainage-stage {
+  height: 520px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-width: 0;
+  background: #10222d;
+}
+.drainage-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: pan-y;
+  cursor: grab;
+  outline-offset: -5px;
+}
+.drainage-stage canvas:active {
+  cursor: grabbing;
+}
+.drainage-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 0;
+  pointer-events: none;
+  transition:
+    opacity 240ms ease,
+    visibility 0s;
+}
+.drainage-widget[data-state='ready'] .drainage-poster {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 240ms ease,
+    visibility 0s 240ms;
+}
+.drainage-stage-heading {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  z-index: 2;
+  pointer-events: none;
+  color: #c4d1d9;
+  font-size: 13px;
+}
+.drainage-interaction {
+  font-size: 12px;
+  color: #91a8b7;
+}
+.drainage-layers {
+  position: absolute;
+  right: 0;
+  bottom: 16px;
+  z-index: 2;
+  background: #10222dcc;
+  backdrop-filter: blur(12px);
+  color: white;
+  border: 1px solid #668091;
+  border-radius: 24px;
+  min-height: 44px;
+  padding: 10px 16px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  font-size: 13px;
+}
+.drainage-layers[aria-pressed='true'] {
+  background: #2048ff;
+  border-color: #6986ff;
+}
+.drainage-materials {
+  position: absolute;
+  top: 62px;
+  right: 0;
+  display: grid;
+  gap: 12px;
+  z-index: 2;
+  pointer-events: none;
+}
+.drainage-materials span {
+  font-size: 12px;
+  color: #d9e1e8;
+  background: #10222dd9;
+  padding: 5px 10px;
+  border-left: 2px solid #839fff;
+}
+.drainage-controls {
+  align-self: center;
+  min-width: 0;
+  padding-top: 16px;
+}
+.drainage-steps {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+.drainage-steps button {
+  position: relative;
+  padding: 18px 20px;
+  background: #182f3b;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  text-align: left;
+  color: #c3d0d8;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.35;
+  min-height: 82px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  transition:
+    background 0.3s,
+    border-color 0.3s,
+    color 0.3s;
+}
+.drainage-steps button[aria-pressed='true'] {
+  color: white;
+  background: #2048ff;
+  border-color: #7391ff;
+}
+.drainage-steps button:disabled {
+  cursor: default;
+}
+.stage-detail {
+  color: #8fa8b8;
+  font-size: 12px;
+  font-weight: 400;
+}
+.drainage-steps button[aria-pressed='true'] .stage-detail {
+  color: #d9e2ff;
+}
+.drainage-caption {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #c4d4df;
+  min-height: 70px;
+  margin: 22px 0 0;
+  max-width: none;
+}
+.drainage-footer {
+  grid-column: 1/-1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding-top: 22px;
+  margin-top: 12px;
+  border-top: 1px solid #314a58;
+}
+.drainage-note {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #90a8b7;
+  margin: 0;
+  max-width: 62ch;
+}
+.drainage-footer .text-link {
+  flex-shrink: 0;
+  min-height: 44px;
+  margin: 0;
+  color: #aac0ff;
+  font-size: 14px;
+  gap: 16px;
+}
+.drainage-feature :focus-visible {
+  outline-color: #acc0ff;
+}
+.drainage-widget > noscript {
+  grid-column: 1/-1;
+}
+@media (max-width: 1199px) {
+  .sump-heading {
+    gap: 40px;
+  }
+  .sump-demonstration {
+    padding: 28px 32px;
+  }
+  .sump-explanation {
+    gap: 24px;
+  }
+  .sump-explanation h3 {
+    font-size: 19px;
+  }
+  .drainage-feature {
+    padding: 32px;
+  }
+  .drainage-intro {
+    gap: 28px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .drainage-intro h3 {
+    font-size: 36px;
+  }
+  .drainage-description {
+    font-size: 15px;
+  }
+  .drainage-widget {
+    grid-template-columns: minmax(0, 1fr) 240px;
+    column-gap: 24px;
+  }
+  .drainage-stage {
+    height: 460px;
+  }
+  .drainage-steps button {
+    padding: 16px;
+    font-size: 15px;
+  }
+  .drainage-footer {
+    gap: 24px;
+  }
+  .drainage-note {
+    max-width: 47ch;
+  }
+  .drainage-footer .text-link {
+    font-size: 13px;
+  }
+}
+@media (max-width: 999px) {
+  .drainage-widget {
+    grid-template-columns: 1fr;
+  }
+  .drainage-stage {
+    height: 460px;
+  }
+  .drainage-controls {
+    padding-top: 0;
+  }
+  .drainage-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .drainage-caption {
+    min-height: 46px;
+    margin-top: 18px;
+  }
+  .drainage-footer {
+    margin-top: 4px;
+    gap: 24px;
+  }
+  .drainage-note {
+    max-width: 42ch;
+  }
+}
+@media (max-width: 767px) {
+  .sump-heading {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    margin-bottom: 28px;
+  }
+  .sump-eyebrow {
+    margin-bottom: 14px;
+  }
+  .sump-problem .sump-lead {
+    font-size: 21px;
+  }
+  .sump-problem p {
+    font-size: 15px;
+  }
+  .sump-demonstration {
+    padding: 26px 20px;
+    margin-inline: -20px;
+    border-radius: 0;
+  }
+  .sump-model-title {
+    font-size: 23px;
+    max-width: 23ch;
+    margin-bottom: 16px;
+  }
+  .sump-explanation {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-top: 28px;
+  }
+  .sump-explanation article {
+    padding-top: 20px;
+  }
+  .sump-explanation h3 {
+    font-size: 21px;
+    margin-bottom: 10px;
+  }
+  .sump-readout {
+    left: 12px;
+    bottom: 8px;
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+  .sump-outlet-label {
+    font-size: 10px;
+  }
+  .drainage-feature {
+    margin: 40px -20px 0;
+    padding: 28px 20px;
+    border-radius: 0;
+  }
+  .drainage-intro {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-bottom: 12px;
+  }
+  .drainage-intro h3 {
+    font-size: 34px;
+    max-width: 13ch;
+  }
+  .drainage-intro .drainage-label {
+    margin-bottom: 12px;
+  }
+  .drainage-description {
+    font-size: 15px;
+    max-width: 39ch;
+  }
+  .drainage-stage {
+    height: 330px;
+    margin-inline: -12px;
+  }
+  .drainage-stage-heading {
+    left: 12px;
+    right: 12px;
+    top: 10px;
+    font-size: 12px;
+  }
+  .drainage-interaction {
+    font-size: 11px;
+  }
+  .drainage-layers {
+    right: 12px;
+    bottom: 10px;
+    font-size: 12px;
+    padding: 8px 13px;
+  }
+  .drainage-materials {
+    top: 40px;
+    right: 12px;
+    gap: 6px;
+  }
+  .drainage-materials span {
+    font-size: 10px;
+    padding: 4px 7px;
+  }
+  .drainage-steps {
+    gap: 7px;
+  }
+  .drainage-steps button {
+    padding: 13px 10px;
+    min-height: 100px;
+    font-size: 13px;
+    gap: 8px;
+    border-radius: 6px;
+  }
+  .stage-detail {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  .drainage-caption {
+    min-height: 66px;
+    font-size: 13px;
+    margin-top: 16px;
+  }
+  .drainage-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 0;
+    padding-top: 16px;
+  }
+  .drainage-note {
+    font-size: 11px;
+    max-width: none;
+  }
+  .drainage-footer .text-link {
+    font-size: 13px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .drainage-steps button {
+    transition: none;
+  }
+}
